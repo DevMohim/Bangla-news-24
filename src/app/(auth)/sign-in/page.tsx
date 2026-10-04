@@ -20,7 +20,7 @@ const SignInPage = () => {
      });
 
      if (data) {
-       toast.success("Sign Up successfully");
+       toast.success("Sign In successfully");
      }
      if (error) {
        toast.error(error?.message as string);
