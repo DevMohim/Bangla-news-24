@@ -26,9 +26,9 @@ const navLinks: Navlink[] = allNavLinks.filter((link: Navlink) => link.scrapable
   });
 
   return (
-    <header className="">
+    <header className="relative">
       {/* top of header */}
-      <section className="flex items-center justify-between p-4 max-w-7xl mx-auto relative">
+      <section className="flex items-center justify-between p-4 max-w-7xl mx-auto ">
         <div />
 
         <div className="flex items-center gap-3 ml-44">

@@ -8,8 +8,9 @@ import toast from "react-hot-toast";
 const SignUpPage = () => {
   const handleSubmit = async (e: React.SubmitEvent<HTMLElement>) => {
     e.preventDefault();
+    const form = e.target
 
-    const formData = new FormData(e.target);
+    const formData = new FormData(form);
     const userData = Object.fromEntries(formData.entries()) as {
       name: string;
       email: string;
@@ -23,6 +24,7 @@ const SignUpPage = () => {
     });
 
     if (data) {
+      form.reset()
       toast.success("Sign Up successfully");
       redirect("/");
     }
@@ -42,6 +44,7 @@ const SignUpPage = () => {
             type="text"
             name="name"
             className="input outline-none w-md focus::border focus:border-red-700"
+            autoComplete='name'
           />
 
           <label className="label">Image</label>
@@ -49,6 +52,7 @@ const SignUpPage = () => {
             type="text"
             name="image"
             className="input outline-none w-md focus::border focus:border-red-700"
+            autoComplete='off'
           />
 
           <label className="label">ইমেইল</label>
@@ -56,12 +60,14 @@ const SignUpPage = () => {
             type="email"
             name="email"
             className="input outline-none w-md focus::border focus:border-red-700"
+            autoComplete='email'
           />
 
           <label className="label">পাসওয়ার্ড</label>
           <input
             type="password"
             className="input outline-none w-md focus::border focus:border-red-700"
+            autoComplete='new-password'
             name="password"
           />
 

@@ -7,8 +7,9 @@ import toast from 'react-hot-toast';
 const SignInPage = () => {
    const handleSubmit = async (e: React.SubmitEvent<HTMLElement>) => {
      e.preventDefault();
+     const form = e.target;
 
-     const formData = new FormData(e.target);
+     const formData = new FormData(form);
      const userData = Object.fromEntries(formData.entries()) as {
        email: string;
        password: string;
@@ -20,6 +21,7 @@ const SignInPage = () => {
      });
 
      if (data) {
+      form.reset()
        toast.success("Sign In successfully");
      }
      if (error) {
@@ -38,12 +40,14 @@ const SignInPage = () => {
              type="email"
              name="email"
              className="input outline-none w-md focus::border focus:border-red-700"
+             autoComplete='email'
            />
 
            <label className="label">পাসওয়ার্ড</label>
            <input
              type="password"
              className="input outline-none w-md focus::border focus:border-red-700"
+             autoComplete='new-password'
              name="password"
            />
 
