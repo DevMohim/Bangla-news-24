@@ -7,7 +7,7 @@ const SelectedNews = ({news} : {news: ISelectedNews}) => {
    
    return (
      <Link href={`article/${news.id}`}>
-       <div className="card bg-base-100 shadow-sm hover:border hover:border-red-700/50 transition-all duration-100">
+       <div className="card bg-base-100 shadow-sm hover:border hover:border-red-700/50 transition-all duration-100 ">
          <figure>
            <Image
              src={news.imageUrl}
