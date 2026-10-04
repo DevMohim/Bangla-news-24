@@ -4,6 +4,7 @@ import Link from "next/link";
 import { LatestNews, Navlink } from "@/types/type";
 import MarqueeText from "react-marquee-text";
 import "react-marquee-text/dist/styles.css";
+import UserInfo from "./UserInfo";
 
 const Navbar = async () => {
   const res = await fetch("https://news-api-v2.vercel.app/api/categories");
@@ -25,10 +26,9 @@ const navLinks: Navlink[] = allNavLinks.filter((link: Navlink) => link.scrapable
   });
 
   return (
-    <header className="relative">
-      
+    <header className="">
       {/* top of header */}
-      <section className="flex items-center justify-between p-4 max-w-7xl mx-auto ">
+      <section className="flex items-center justify-between p-4 max-w-7xl mx-auto relative">
         <div />
 
         <div className="flex items-center gap-3 ml-44">
@@ -49,13 +49,9 @@ const navLinks: Navlink[] = allNavLinks.filter((link: Navlink) => link.scrapable
         </div>
 
         <div className="flex items-center gap-2">
-          <button className="btn border-none bg-white">সাইন ইন</button>
-          <button className="btn btn-secondary bg-red-700 font-semibold text-white">
-            সাইন আপ
-          </button>
+          <UserInfo />
         </div>
       </section>
-
 
       {/* navbar */}
       <nav className="flex items-center justify-center gap-4 max-w-7xl mx-auto">
@@ -78,13 +74,12 @@ const navLinks: Navlink[] = allNavLinks.filter((link: Navlink) => link.scrapable
         </div>
       </nav>
 
-
       {/* marquee latest news */}
-      <section className="bg-red-700 text-white my-4 sticky top-0 left-0">
+      <section className="sticky top-0 z-50 bg-red-700 text-white my-4">
         <div className="flex max-w-7xl mx-auto">
           <div className="bg-red-800 py-2 px-5 font-bold">সর্বশেষ</div>
 
-          <MarqueeText className="py-2" direction="right" duration={10} >
+          <MarqueeText className="py-2" direction="right" duration={10}>
             {latestNews.map((h) => (
               <Link
                 className="hover:underline"
